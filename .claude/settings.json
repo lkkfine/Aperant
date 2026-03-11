@@ -1,0 +1,46 @@
+{
+  "permissions": {
+    "allow": [
+      "npm run build",
+      "npm run dev",
+      "npm run build:start",
+      "npm run build:clean",
+      "npm run lint",
+      "npm run test",
+      "npm run test:backend",
+      "npm run install:all",
+      "npm run install:backend",
+      "npm run install:frontend",
+      "npm run typecheck",
+      "cd apps/frontend && npm run lint",
+      "cd apps/frontend && npm run lint:fix",
+      "cd apps/frontend && npm run typecheck",
+      "cd apps/frontend && npm test",
+      "cd apps/frontend && npm run build",
+      "cd apps/frontend && npm run dev",
+      "python -m pytest",
+      "git status",
+      "git diff",
+      "git log",
+      "git add",
+      "git commit",
+      "git branch",
+      "git checkout",
+      "git merge",
+      "git stash",
+      "git fetch",
+      "git pull",
+      "git push"
+    ],
+    "deny": [
+      "rm -rf /",
+      "git push --force",
+      "git reset --hard",
+      "npm publish",
+      "electron-builder"
+    ]
+  },
+  "model": {
+    "thinking": true
+  }
+}
