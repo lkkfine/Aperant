@@ -195,7 +195,7 @@ function stageRuntimePackages(frontendDir, platform, arch) {
     `@lydell/node-pty-${nodePlatform}-${arch}`,
     'minimatch',
   ];
-  const outMainDir = path.join(rootDir, 'build', 'main');
+  const outMainDir = path.join(rootDir, 'build', 'out', 'main');
   const outModulesDir = path.join(outMainDir, 'node_modules');
 
   if (!fs.existsSync(outMainDir)) {

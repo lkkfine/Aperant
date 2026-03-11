@@ -66,25 +66,32 @@ function getFileSize(filePath) {
  */
 function getBuildArtifacts(buildDir) {
   const artifacts = [];
+  const outDir = path.join(buildDir, 'out');
   const compiledDir = path.join(buildDir, 'compiled');
 
-  // Check new structure first, fallback to old structure
-  const mainBase = fs.existsSync(compiledDir) ? compiledDir : buildDir;
+  // Priority: out/ > compiled/ > build/
+  let mainBase = buildDir;
+  if (fs.existsSync(outDir)) {
+    mainBase = outDir;
+  } else if (fs.existsSync(compiledDir)) {
+    mainBase = compiledDir;
+  }
 
   // Main process
   const mainDir = path.join(mainBase, 'main');
   if (fs.existsSync(mainDir)) {
     const mainJs = path.join(mainDir, 'index.js');
     const nodeModules = path.join(mainDir, 'node_modules');
+    const prefix = mainBase === outDir ? 'out/' : (mainBase === compiledDir ? 'compiled/' : '');
     artifacts.push({
-      name: 'compiled/main/index.js',
+      name: `${prefix}main/index.js`,
       path: mainJs,
       size: getFileSize(mainJs),
       description: 'Electron main process'
     });
     if (fs.existsSync(nodeModules)) {
       artifacts.push({
-        name: 'compiled/main/node_modules/',
+        name: `${prefix}main/node_modules/`,
         path: nodeModules,
         size: getDirSize(nodeModules),
         description: 'Externalized dependencies'
@@ -96,8 +103,9 @@ function getBuildArtifacts(buildDir) {
   const preloadDir = path.join(mainBase, 'preload');
   if (fs.existsSync(preloadDir)) {
     const preloadJs = path.join(preloadDir, 'index.mjs');
+    const prefix = mainBase === outDir ? 'out/' : (mainBase === compiledDir ? 'compiled/' : '');
     artifacts.push({
-      name: 'compiled/preload/index.mjs',
+      name: `${prefix}preload/index.mjs`,
       path: preloadJs,
       size: getFileSize(preloadJs),
       description: 'Preload script'
@@ -107,8 +115,9 @@ function getBuildArtifacts(buildDir) {
   // Renderer
   const rendererDir = path.join(mainBase, 'renderer');
   if (fs.existsSync(rendererDir)) {
+    const prefix = mainBase === outDir ? 'out/' : (mainBase === compiledDir ? 'compiled/' : '');
     artifacts.push({
-      name: 'compiled/renderer/',
+      name: `${prefix}renderer/`,
       path: rendererDir,
       size: getDirSize(rendererDir),
       description: 'React UI'

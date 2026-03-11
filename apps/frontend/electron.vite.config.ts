@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import { config as dotenvConfig } from 'dotenv';
 
-const buildDir = resolve(__dirname, '../../build/compiled');
+const buildDir = resolve(__dirname, '../../build/out');
 
 // Load .env file for build-time constants (Sentry DSN, etc.)
 dotenvConfig({ path: resolve(__dirname, '.env') });
