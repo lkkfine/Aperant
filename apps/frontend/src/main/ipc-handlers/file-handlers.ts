@@ -1,6 +1,6 @@
 import { ipcMain } from 'electron';
 import { readdirSync, statSync } from 'fs';
-import { readFile } from 'fs/promises';
+import { readFile, writeFile } from 'fs/promises';
 import path from 'path';
 import { IPC_CHANNELS } from '../../shared/constants';
 import type { IPCResult, FileNode } from '../../shared/types';
@@ -117,6 +117,28 @@ export function registerFileHandlers(): void {
         return {
           success: false,
           error: error instanceof Error ? error.message : 'Failed to read file'
+        };
+      }
+    }
+  );
+
+  ipcMain.handle(
+    IPC_CHANNELS.FILE_EXPLORER_WRITE,
+    async (_, filePath: string, content: string): Promise<IPCResult<void>> => {
+      try {
+        const validation = validatePath(filePath);
+        if (!validation.valid) {
+          return { success: false, error: validation.error };
+        }
+        if (content.length > MAX_FILE_SIZE) {
+          return { success: false, error: 'File content too large (max 1MB)' };
+        }
+        await writeFile(validation.path, content, 'utf-8');
+        return { success: true, data: undefined };
+      } catch (error) {
+        return {
+          success: false,
+          error: error instanceof Error ? error.message : 'Failed to write file'
         };
       }
     }

@@ -155,7 +155,7 @@ export function initializeGit(projectPath: string): InitializationResult {
 /**
  * Entries to add to .gitignore when initializing a project
  */
-const GITIGNORE_ENTRIES = ['.auto-claude/'];
+const GITIGNORE_ENTRIES = ['.aperant/'];
 
 /**
  * Ensure entries exist in the project's .gitignore file.
@@ -219,7 +219,7 @@ function ensureGitignoreEntries(projectPath: string, entries: string[]): void {
 }
 
 /**
- * Data directories created in .auto-claude for each project
+ * Data directories created in .aperant for each project
  */
 const DATA_DIRECTORIES = [
   'specs',
@@ -259,17 +259,17 @@ export function getLocalSourcePath(projectPath: string): string | null {
 }
 
 /**
- * Check if project is initialized (has .auto-claude directory)
+ * Check if project is initialized (has .aperant directory)
  */
 export function isInitialized(projectPath: string): boolean {
-  const dotAutoBuildPath = path.join(projectPath, '.auto-claude');
+  const dotAutoBuildPath = path.join(projectPath, '.aperant');
   return existsSync(dotAutoBuildPath);
 }
 
 /**
  * Initialize auto-claude data directory in a project.
  *
- * Creates .auto-claude/ with data directories (specs, ideation, insights, roadmap).
+ * Creates .aperant/ with data directories (specs, ideation, insights, roadmap).
  * The framework code runs from the source repo - only data is stored here.
  *
  * Requires:
@@ -299,20 +299,20 @@ export function initializeProject(projectPath: string): InitializationResult {
   }
 
   // Check if already initialized
-  const dotAutoBuildPath = path.join(projectPath, '.auto-claude');
+  const dotAutoBuildPath = path.join(projectPath, '.aperant');
 
   if (existsSync(dotAutoBuildPath)) {
-    debug('Already initialized - .auto-claude exists');
+    debug('Already initialized - .aperant exists');
     return {
       success: false,
-      error: 'Project already has auto-claude initialized (.auto-claude exists)'
+      error: 'Project already has auto-claude initialized (.aperant exists)'
     };
   }
 
   try {
-    debug('Creating .auto-claude data directory', { dotAutoBuildPath });
+    debug('Creating .aperant data directory', { dotAutoBuildPath });
 
-    // Create the .auto-claude directory
+    // Create the .aperant directory
     mkdirSync(dotAutoBuildPath, { recursive: true });
 
     // Create data directories
@@ -323,7 +323,7 @@ export function initializeProject(projectPath: string): InitializationResult {
       writeFileSync(path.join(dirPath, '.gitkeep'), '', 'utf-8');
     }
 
-    // Update .gitignore to exclude .auto-claude/
+    // Update .gitignore to exclude .aperant/
     ensureGitignoreEntries(projectPath, GITIGNORE_ENTRIES);
 
     debug('Initialization complete');
@@ -339,11 +339,11 @@ export function initializeProject(projectPath: string): InitializationResult {
 }
 
 /**
- * Ensure all data directories exist in .auto-claude.
+ * Ensure all data directories exist in .aperant.
  * Useful if new directories are added in future versions.
  */
 export function ensureDataDirectories(projectPath: string): InitializationResult {
-  const dotAutoBuildPath = path.join(projectPath, '.auto-claude');
+  const dotAutoBuildPath = path.join(projectPath, '.aperant');
 
   if (!existsSync(dotAutoBuildPath)) {
     return {
@@ -373,20 +373,20 @@ export function ensureDataDirectories(projectPath: string): InitializationResult
 /**
  * Get the auto-claude folder path for a project.
  *
- * IMPORTANT: Only .auto-claude/ is considered a valid "installed" auto-claude.
+ * IMPORTANT: Only .aperant/ is considered a valid "installed" auto-claude.
  * The auto-claude/ folder (if it exists) is the SOURCE CODE being developed,
  * not an installation. This allows Auto Claude to be used to develop itself.
  */
 export function getAutoBuildPath(projectPath: string): string | null {
-  const dotAutoBuildPath = path.join(projectPath, '.auto-claude');
+  const dotAutoBuildPath = path.join(projectPath, '.aperant');
 
   debug('getAutoBuildPath called', { projectPath, dotAutoBuildPath });
 
   if (existsSync(dotAutoBuildPath)) {
-    debug('Returning .auto-claude (installed version)');
-    return '.auto-claude';
+    debug('Returning .aperant (installed version)');
+    return '.aperant';
   }
 
-  debug('No .auto-claude folder found - project not initialized');
+  debug('No .aperant folder found - project not initialized');
   return null;
 }

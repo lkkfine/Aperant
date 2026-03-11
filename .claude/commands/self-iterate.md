@@ -18,11 +18,22 @@ npm run build:start
 
 4. Create tasks in Aperant's Kanban board to work on its own source code.
 
+## Directory Structure
+
+```
+build/
+├── compiled/           # Compiled output
+│   ├── main/          # Electron main process
+│   ├── preload/       # Preload script
+│   └── renderer/      # React UI
+└── releases/          # Packaged installers
+```
+
 ## Key Principles
 
 - Source code lives in `apps/` — edit here
-- Build output goes to `build/` — never edit here
-- The running Aperant reads from `build/`, the source stays clean
+- Build output goes to `build/compiled/` — never edit here
+- The running Aperant reads from `build/compiled/`, the source stays clean
 - After making changes, rebuild with `npm run build` and relaunch
 - For incremental work, use `npm run dev` for HMR during development
 

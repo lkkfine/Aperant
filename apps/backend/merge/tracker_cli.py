@@ -19,12 +19,12 @@ from .file_timeline import FileTimelineTracker
 
 
 def find_project_root() -> Path:
-    """Find the project root by looking for .auto-claude or .git directory."""
+    """Find the project root by looking for .aperant or .git directory."""
     current = Path.cwd()
 
-    # Walk up until we find .auto-claude or .git
+    # Walk up until we find .aperant or .git
     while current != current.parent:
-        if (current / ".auto-claude").exists() or (current / ".git").exists():
+        if (current / ".aperant").exists() or (current / ".git").exists():
             return current
         current = current.parent
 

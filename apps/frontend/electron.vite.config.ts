@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import { config as dotenvConfig } from 'dotenv';
 
-const buildDir = resolve(__dirname, '../../build');
+const buildDir = resolve(__dirname, '../../build/compiled');
 
 // Load .env file for build-time constants (Sentry DSN, etc.)
 dotenvConfig({ path: resolve(__dirname, '.env') });
@@ -105,12 +105,12 @@ export default defineConfig({
           '**/node_modules/**',
           '**/.git/**',
           '**/.worktrees/**',
-          '**/.auto-claude/**',
+          '**/.aperant/**',
           '**/out/**',
           '**/build/**',
           // Ignore the parent autonomous-coding directory's worktrees
           resolve(__dirname, '../.worktrees/**'),
-          resolve(__dirname, '../.auto-claude/**'),
+          resolve(__dirname, '../.aperant/**'),
         ]
       }
     }

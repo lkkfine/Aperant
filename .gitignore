@@ -54,14 +54,13 @@ lerna-debug.log*
 .worktrees/
 
 # ===========================
-# Auto Claude Generated
+# Aperant Generated
 # ===========================
-.auto-claude/
+.aperant/
 .planning/
 .planning-archive/
-.auto-build-security.json
-.auto-claude-security.json
-.auto-claude-status
+.aperant-security.json
+.aperant-status
 .claude_settings.json
 .update-metadata.json
 
@@ -165,6 +164,13 @@ playwright/.cache/
 *.bak
 *.tmp
 *.temp
+*.backup
+*.orig
+*.original
+
+# Lock files (using npm only)
+pnpm-lock.yaml
+yarn.lock
 
 # Development
 dev/

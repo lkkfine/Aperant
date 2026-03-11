@@ -4,6 +4,15 @@
  */
 
 // ============================================
+// Data Directory
+// ============================================
+
+/** Runtime data directory name for Aperant.
+ * All project-specific data (specs, roadmap, ideation, etc.) is stored here.
+ * Named to match the application name. */
+export const DATA_DIR = '.aperant';
+
+// ============================================
 // Terminal Timing Constants
 // ============================================
 
@@ -96,11 +105,11 @@ export const DEFAULT_PROJECT_SETTINGS = {
 // ============================================
 
 // File paths relative to project
-// IMPORTANT: All paths use .auto-claude/ (the installed instance), NOT auto-claude/ (source code)
+// IMPORTANT: All paths use .aperant/ (the project's data directory)
 export const AUTO_BUILD_PATHS = {
-  SPECS_DIR: '.auto-claude/specs',
-  ROADMAP_DIR: '.auto-claude/roadmap',
-  IDEATION_DIR: '.auto-claude/ideation',
+  SPECS_DIR: `${DATA_DIR}/specs`,
+  ROADMAP_DIR: `${DATA_DIR}/roadmap`,
+  IDEATION_DIR: `${DATA_DIR}/ideation`,
   IMPLEMENTATION_PLAN: 'implementation_plan.json',
   SPEC_FILE: 'spec.md',
   QA_REPORT: 'qa_report.md',
@@ -113,15 +122,15 @@ export const AUTO_BUILD_PATHS = {
   COMPETITOR_ANALYSIS: 'competitor_analysis.json',
   IDEATION_FILE: 'ideation.json',
   IDEATION_CONTEXT: 'ideation_context.json',
-  PROJECT_INDEX: '.auto-claude/project_index.json',
+  PROJECT_INDEX: `${DATA_DIR}/project_index.json`,
   GRAPHITI_STATE: '.graphiti_state.json'
 } as const;
 
 /**
  * Get the specs directory path.
- * All specs go to .auto-claude/specs/ (the project's data directory).
+ * All specs go to .aperant/specs/ (the project's data directory).
  */
 export function getSpecsDir(autoBuildPath: string | undefined): string {
-  const basePath = autoBuildPath || '.auto-claude';
+  const basePath = autoBuildPath || DATA_DIR;
   return `${basePath}/specs`;
 }

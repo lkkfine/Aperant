@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd \"D:/VarsaNetra/Aperant\" && node scripts/build-report.js)",
+      "Bash(cd \"D:/VarsaNetra/Aperant\" && npm run build:clean)",
+      "Bash(cd \"D:/VarsaNetra/Aperant\" && npm run build 2>&1 | head -50)",
+      "Bash(cd \"D:/VarsaNetra/Aperant\" && timeout 5 npm run build:start 2>&1 || true)",
+      "Bash(cd \"D:/VarsaNetra/Aperant\" && node scripts/rename-data-dir.js 2>&1)",
+      "Bash(cd \"D:/VarsaNetra/Aperant\" && mv .auto-claude .aperant 2>/dev/null && echo \"Renamed .auto-claude to .aperant\" || echo \"Directory may not exist or already renamed\")",
+      "Bash(cd \"D:/VarsaNetra/Aperant\" && mv .auto-claude-security.json .aperant-security.json 2>/dev/null && echo \"Renamed security file\" || echo \"Security file may not exist\")",
+      "Bash(cd \"D:/VarsaNetra/Aperant\" && cmd //c \"ren .auto-claude .aperant\")"
+    ]
+  }
+}

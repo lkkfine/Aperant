@@ -756,5 +756,15 @@
       "blockedTooltip": "Cette PR ne peut pas être fusionnée en raison de conditions bloquantes",
       "conflictTooltip": "Cette PR a des conflits de fusion qui doivent être résolus"
     }
+  },
+  "fileEditor": {
+    "title": "Modifier : {{name}}",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "saving": "Enregistrement...",
+    "saveSuccess": "Fichier enregistré avec succès",
+    "saveFailed": "Échec de l'enregistrement du fichier",
+    "unsavedChanges": "Modifications non enregistrées",
+    "unsavedWarning": "Vous avez des modifications non enregistrées. Les abandonner ?"
   }
 }

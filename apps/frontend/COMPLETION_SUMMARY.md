@@ -245,8 +245,8 @@ The feature is **fully implemented** and ready for QA review:
 ## Documentation
 
 - **Verification Summary:** `VERIFICATION_SUMMARY.md`
-- **Build Progress:** `.auto-claude/specs/049-customizable-agent-terminal-fonts-with-os-specific/build-progress.txt`
-- **Implementation Plan:** `.auto-claude/specs/049-customizable-agent-terminal-fonts-with-os-specific/implementation_plan.json`
+- **Build Progress:** `.aperant/specs/049-customizable-agent-terminal-fonts-with-os-specific/build-progress.txt`
+- **Implementation Plan:** `.aperant/specs/049-customizable-agent-terminal-fonts-with-os-specific/implementation_plan.json`
 
 ---
 

@@ -56,10 +56,10 @@ Auto Claude is a desktop application (+ CLI) where users describe a goal and AI 
 
 ### Resetting PR Review State
 
-To fully clear all PR review data so reviews run fresh, delete/reset these three things in `.auto-claude/github/`:
+To fully clear all PR review data so reviews run fresh, delete/reset these three things in `.aperant/github/`:
 
-1. `rm .auto-claude/github/pr/logs_*.json` — review log files
-2. `rm .auto-claude/github/pr/review_*.json` — review result files
+1. `rm .aperant/github/pr/logs_*.json` — review log files
+2. `rm .aperant/github/pr/review_*.json` — review result files
 3. Reset `pr/index.json` to `{"reviews": [], "last_updated": null}`
 4. Reset `bot_detection_state.json` to `{"reviewed_commits": {}}` — this is the gatekeeper; without clearing it, the bot detector skips already-seen commits
 
@@ -158,7 +158,7 @@ Model and thinking level are user-configurable (via the Electron UI settings or 
 
 ### Spec Directory Structure
 
-Each spec in `.auto-claude/specs/XXX-name/` contains: `spec.md`, `requirements.json`, `context.json`, `implementation_plan.json`, `qa_report.md`, `QA_FIX_REQUEST.md`
+Each spec in `.aperant/specs/XXX-name/` contains: `spec.md`, `requirements.json`, `context.json`, `implementation_plan.json`, `qa_report.md`, `QA_FIX_REQUEST.md`
 
 ### Memory System (Graphiti)
 
@@ -302,5 +302,5 @@ npm run dev        # Development mode with HMR
 npm run dev:debug  # Debug mode with verbose output
 npm run dev:mcp    # Electron MCP server for AI debugging
 
-# Project data: .auto-claude/specs/ (gitignored)
+# Project data: .aperant/specs/ (gitignored)
 ```

@@ -756,5 +756,15 @@
       "blockedTooltip": "This PR cannot be merged due to blocking conditions",
       "conflictTooltip": "This PR has merge conflicts that need to be resolved"
     }
+  },
+  "fileEditor": {
+    "title": "Edit: {{name}}",
+    "save": "Save",
+    "cancel": "Cancel",
+    "saving": "Saving...",
+    "saveSuccess": "File saved successfully",
+    "saveFailed": "Failed to save file",
+    "unsavedChanges": "Unsaved changes",
+    "unsavedWarning": "You have unsaved changes. Discard them?"
   }
 }

@@ -267,11 +267,11 @@ Examples:
     ):
         # Running from within auto-claude/apps/backend/ source directory, go up 1 level
         project_dir = project_dir.parent
-    elif not (project_dir / ".auto-claude").exists():
-        # No .auto-claude folder found - try to find project root
-        # First check for .auto-claude (installed instance)
+    elif not (project_dir / ".aperant").exists():
+        # No .aperant folder found - try to find project root
+        # First check for .aperant (installed instance)
         for parent in project_dir.parents:
-            if (parent / ".auto-claude").exists():
+            if (parent / ".aperant").exists():
                 project_dir = parent
                 break
 

@@ -48,7 +48,7 @@
 
 - **Integrations** — Fixed Ollama infinite subprocess spawning, Graphiti import paths, OpenRouter API URL suffix, and GitLab authentication bugs
 
-- **Settings & configuration** — Corrected .auto-claude path discovery timeout, z.AI China preset URL, log order sorting, and onboarding completion state persistence
+- **Settings & configuration** — Corrected .aperant path discovery timeout, z.AI China preset URL, log order sorting, and onboarding completion state persistence
 
 ### 📚 Documentation
 
@@ -129,7 +129,7 @@
 - auto-claude: 200-bug-changelog-and-release-generation (#1729) by @Andy in 826583b82
 - fix(terminal): use each terminal's cwd for invoke Claude all button (#1756) by @Andy in ac4fe4f42
 - feat(terminal): read Claude Code CLI settings and inject env vars into PTY sessions (#1750) by @Andy in 152e54093
-- fix: correct .auto-claude path mismatch causing discovery phase timeout (#1748) by @VDT-91 in 2c2a8a754
+- fix: correct .aperant path mismatch causing discovery phase timeout (#1748) by @VDT-91 in 2c2a8a754
 - fix: remove incorrect /v1 suffix from OpenRouter API URL (#1749) by @StillKnotKnown in 7e799ee57
 - fix: prevent terminal worktree crash with race condition fixes (#1586) (#1658) by @VDT-91 in 216b58bcf
 - fix: correct log order sorting and add configurable log order setting (#1720) by @Burak in 2e2b82365
@@ -1653,7 +1653,7 @@
 
 - Preview panel now receives projectPath prop correctly for image component functionality
 
-- Default database path unified to ~/.auto-claude/memories for consistency
+- Default database path unified to ~/.aperant/memories for consistency
 
 - @lydell/node-pty build scripts compatibility improved for pnpm v10
 
@@ -1691,7 +1691,7 @@
 
 - fix(merge): use stored baseBranch from task metadata for merge operations by @AndyMik90 in 8d56474
 
-- fix: unify default database path to ~/.auto-claude/memories by @AndyMik90 in 684e3f9
+- fix: unify default database path to ~/.aperant/memories by @AndyMik90 in 684e3f9
 
 - fix(ui): fix tab persistence and scope terminal shortcuts by @AndyMik90 in 2d1168b
 
@@ -1978,7 +1978,7 @@
 
 - Code cleanup and test fixture updates
 - Removed redundant auto-claude/specs directory structure
-- Untracked .auto-claude directory to respect gitignore rules
+- Untracked .aperant directory to respect gitignore rules
 
 ---
 
@@ -1995,7 +1995,7 @@
 - fix: preserve roadmap generation state when switching projects by @AndyMik90 in 569e921
 - feat: add required GitHub setup flow after Auto Claude initialization by @AndyMik90 in 03ccce5
 - chore: remove redundant auto-claude/specs directory by @AndyMik90 in 64d5170
-- chore: untrack .auto-claude directory (should be gitignored) by @AndyMik90 in 0710c13
+- chore: untrack .aperant directory (should be gitignored) by @AndyMik90 in 0710c13
 - fix: prevent dialog skip during project initialization by @AndyMik90 in 56cedec
 - feat: enhance merge workflow by detecting current branch by @AndyMik90 in c0c8067
 - fix: update model IDs for Sonnet and Haiku by @AndyMik90 in 059315d
@@ -2347,7 +2347,7 @@ Bug Fixes:
 
 ### 🔧 Other Changes
 
-- Removed .auto-claude and _bmad-output from git tracking (already in .gitignore)
+- Removed .aperant and _bmad-output from git tracking (already in .gitignore)
 
 - Updated Python versions in CI workflows
 
@@ -2390,7 +2390,7 @@ Bug Fixes:
 - improve: Getting ready for BMAD integration by @AndyMik90 in b94eb65
 - improve: Enhance AI resolver and debugging output by @AndyMik90 in bf787ad
 - improve: Integrate profile environment for OAuth token in task handlers by @AndyMik90 in 01e801a
-- chore: Remove .auto-claude from tracking (already in .gitignore) by @AndyMik90 in 87f353c
+- chore: Remove .aperant from tracking (already in .gitignore) by @AndyMik90 in 87f353c
 - chore: Update Python versions in CI workflows by @AndyMik90 in 43a338c
 - chore: Linting gods pleased now? by @AndyMik90 in 6aea4bb
 - chore: Linting and test fixes by @AndyMik90 in 140f11f
@@ -2475,7 +2475,7 @@ Bug Fixes:
 - Updated project-store.ts to use proper Dirent type for specDirs variable
 - Refactored codebase for better code quality
 - Removed worktree-worker logic in favor of Claude Code's internal agent system
-- Removed obsolete security configuration file (.auto-claude-security.json)
+- Removed obsolete security configuration file (.aperant-security.json)
 
 ### Documentation
 - Added CONTRIBUTING.md with development guidelines

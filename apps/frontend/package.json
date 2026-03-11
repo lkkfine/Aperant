@@ -1,16 +1,16 @@
 {
-  "name": "auto-claude-ui",
+  "name": "aperant-ui",
   "version": "2.7.6",
   "type": "module",
-  "description": "Desktop UI for Auto Claude autonomous coding framework",
+  "description": "Desktop UI for Aperant autonomous coding framework",
   "homepage": "https://github.com/AndyMik90/Auto-Claude",
   "repository": {
     "type": "git",
     "url": "https://github.com/AndyMik90/Auto-Claude.git"
   },
-  "main": "../../build/main/index.js",
+  "main": "../../build/compiled/main/index.js",
   "author": {
-    "name": "Auto Claude Team",
+    "name": "Aperant Team",
     "email": "119136210+AndyMik90@users.noreply.github.com"
   },
   "license": "AGPL-3.0",
@@ -38,9 +38,9 @@
     "package:flatpak": "node scripts/package-with-python.cjs --linux flatpak",
     "verify:linux": "node scripts/verify-linux-packages.cjs ../../build/dist",
     "test:verify-linux": "node --test scripts/verify-linux-packages.test.mjs",
-    "start:packaged:mac": "open ../../build/dist/mac-arm64/Auto-Claude.app || open ../../build/dist/mac/Auto-Claude.app",
-    "start:packaged:win": "start \"\" \"..\\..\\build\\dist\\win-unpacked\\Auto-Claude.exe\"",
-    "start:packaged:linux": "../../build/dist/linux-unpacked/auto-claude",
+    "start:packaged:mac": "open ../../build/dist/mac-arm64/Aperant.app || open ../../build/dist/mac/Aperant.app",
+    "start:packaged:win": "start \"\" \"..\\..\\build\\dist\\win-unpacked\\Aperant.exe\"",
+    "start:packaged:linux": "../../build/dist/linux-unpacked/aperant",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
@@ -142,8 +142,8 @@
     "@electron/rebuild": "4.0.2"
   },
   "build": {
-    "appId": "com.autoclaude.ui",
-    "productName": "Auto-Claude",
+    "appId": "com.aperant.ui",
+    "productName": "Aperant",
     "npmRebuild": false,
     "artifactName": "${productName}-${version}-${platform}-${arch}.${ext}",
     "extraMetadata": {
@@ -157,22 +157,22 @@
       }
     ],
     "directories": {
-      "output": "../../build/dist",
+      "output": "../../build/releases",
       "buildResources": "resources"
     },
     "files": [
       {
-        "from": "../../build/main",
+        "from": "../../build/compiled/main",
         "to": "main",
         "filter": ["**/*"]
       },
       {
-        "from": "../../build/preload",
+        "from": "../../build/compiled/preload",
         "to": "preload",
         "filter": ["**/*"]
       },
       {
-        "from": "../../build/renderer",
+        "from": "../../build/compiled/renderer",
         "to": "renderer",
         "filter": ["**/*"]
       },

@@ -24,23 +24,23 @@ if TYPE_CHECKING:
 def get_specs_dir(project_dir: Path) -> Path:
     """Get the specs directory path.
 
-    IMPORTANT: Only .auto-claude/ is considered an "installed" auto-claude.
+    IMPORTANT: Only .aperant/ is considered an "installed" auto-claude.
     The auto-claude/ folder (if it exists) is SOURCE CODE being developed,
     not an installation. This allows Auto Claude to be used to develop itself.
 
-    This function also ensures .auto-claude is added to .gitignore on first use.
+    This function also ensures .aperant is added to .gitignore on first use.
 
     Args:
         project_dir: The project root directory
 
     Returns:
-        Path to the specs directory within .auto-claude/
+        Path to the specs directory within .aperant/
     """
-    # Initialize .auto-claude directory and ensure it's in .gitignore
+    # Initialize .aperant directory and ensure it's in .gitignore
     init_auto_claude_dir(project_dir)
 
     # Return the specs directory path
-    return project_dir / ".auto-claude" / "specs"
+    return project_dir / ".aperant" / "specs"
 
 
 def cleanup_orphaned_pending_folders(specs_dir: Path) -> None:

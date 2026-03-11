@@ -478,7 +478,7 @@ export class AgentQueueManager {
 
         const typeFilePath = path.join(
           projectPath,
-          '.auto-claude',
+          '.aperant',
           'ideation',
           `${ideationType}_ideas.json`
         );
@@ -604,7 +604,7 @@ export class AgentQueueManager {
           try {
             const ideationFilePath = path.join(
               storedProjectPath,
-              '.auto-claude',
+              '.aperant',
               'ideation',
               'ideation.json'
             );
@@ -909,7 +909,7 @@ export class AgentQueueManager {
           try {
             const roadmapFilePath = path.join(
               storedProjectPath,
-              '.auto-claude',
+              '.aperant',
               'roadmap',
               'roadmap.json'
             );

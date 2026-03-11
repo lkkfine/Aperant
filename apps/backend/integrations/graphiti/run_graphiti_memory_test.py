@@ -619,7 +619,7 @@ async def main():
     )
     parser.add_argument(
         "--db-path",
-        default=os.path.expanduser("~/.auto-claude/memories"),
+        default=os.path.expanduser("~/.aperant/memories"),
         help="Database path",
     )
     parser.add_argument(

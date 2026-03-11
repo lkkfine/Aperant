@@ -887,7 +887,7 @@ class TestShellCValidator:
         from project.analyzer import ProjectAnalyzer
 
         # Set up a mock project directory with a security profile
-        monkeypatch.setenv("AUTO_CLAUDE_PROJECT_DIR", str(tmp_path))
+        monkeypatch.setenv("APERANT_PROJECT_DIR", str(tmp_path))
 
         # Compute the actual hash for this directory so profile isn't re-analyzed
         actual_hash = ProjectAnalyzer(tmp_path).compute_project_hash()
@@ -920,7 +920,7 @@ class TestShellCValidator:
             "created_at": "",
             "project_hash": actual_hash
         }
-        (tmp_path / ".auto-claude-security.json").write_text(json.dumps(profile_data))
+        (tmp_path / ".aperant-security.json").write_text(json.dumps(profile_data))
 
         # Reset cache to pick up the new profile
         reset_profile_cache()
@@ -935,7 +935,7 @@ class TestShellCValidator:
         """Blocks bash -c with commands not in the allowlist."""
         from project.analyzer import ProjectAnalyzer
 
-        monkeypatch.setenv("AUTO_CLAUDE_PROJECT_DIR", str(tmp_path))
+        monkeypatch.setenv("APERANT_PROJECT_DIR", str(tmp_path))
 
         # Compute the actual hash for this directory so profile isn't re-analyzed
         actual_hash = ProjectAnalyzer(tmp_path).compute_project_hash()
@@ -968,7 +968,7 @@ class TestShellCValidator:
             "created_at": "",
             "project_hash": actual_hash
         }
-        (tmp_path / ".auto-claude-security.json").write_text(json.dumps(profile_data))
+        (tmp_path / ".aperant-security.json").write_text(json.dumps(profile_data))
 
         reset_profile_cache()
 
@@ -982,7 +982,7 @@ class TestShellCValidator:
         """Blocks sh -c with commands not in the allowlist."""
         from project.analyzer import ProjectAnalyzer
 
-        monkeypatch.setenv("AUTO_CLAUDE_PROJECT_DIR", str(tmp_path))
+        monkeypatch.setenv("APERANT_PROJECT_DIR", str(tmp_path))
 
         # Compute the actual hash for this directory so profile isn't re-analyzed
         actual_hash = ProjectAnalyzer(tmp_path).compute_project_hash()
@@ -1014,7 +1014,7 @@ class TestShellCValidator:
             "created_at": "",
             "project_hash": actual_hash
         }
-        (tmp_path / ".auto-claude-security.json").write_text(json.dumps(profile_data))
+        (tmp_path / ".aperant-security.json").write_text(json.dumps(profile_data))
 
         reset_profile_cache()
 
@@ -1026,7 +1026,7 @@ class TestShellCValidator:
         """Handles complex commands with pipes and chains."""
         from project.analyzer import ProjectAnalyzer
 
-        monkeypatch.setenv("AUTO_CLAUDE_PROJECT_DIR", str(tmp_path))
+        monkeypatch.setenv("APERANT_PROJECT_DIR", str(tmp_path))
 
         # Compute the actual hash for this directory so profile isn't re-analyzed
         actual_hash = ProjectAnalyzer(tmp_path).compute_project_hash()
@@ -1058,7 +1058,7 @@ class TestShellCValidator:
             "created_at": "",
             "project_hash": actual_hash
         }
-        (tmp_path / ".auto-claude-security.json").write_text(json.dumps(profile_data))
+        (tmp_path / ".aperant-security.json").write_text(json.dumps(profile_data))
 
         reset_profile_cache()
 
@@ -1074,7 +1074,7 @@ class TestShellCValidator:
         """Blocks bash -xc with disallowed commands (combined flags bypass)."""
         from project.analyzer import ProjectAnalyzer
 
-        monkeypatch.setenv("AUTO_CLAUDE_PROJECT_DIR", str(tmp_path))
+        monkeypatch.setenv("APERANT_PROJECT_DIR", str(tmp_path))
 
         actual_hash = ProjectAnalyzer(tmp_path).compute_project_hash()
 
@@ -1105,7 +1105,7 @@ class TestShellCValidator:
             "created_at": "",
             "project_hash": actual_hash
         }
-        (tmp_path / ".auto-claude-security.json").write_text(json.dumps(profile_data))
+        (tmp_path / ".aperant-security.json").write_text(json.dumps(profile_data))
 
         reset_profile_cache()
 
@@ -1118,7 +1118,7 @@ class TestShellCValidator:
         """Blocks bash -ec with disallowed commands."""
         from project.analyzer import ProjectAnalyzer
 
-        monkeypatch.setenv("AUTO_CLAUDE_PROJECT_DIR", str(tmp_path))
+        monkeypatch.setenv("APERANT_PROJECT_DIR", str(tmp_path))
 
         actual_hash = ProjectAnalyzer(tmp_path).compute_project_hash()
 
@@ -1149,7 +1149,7 @@ class TestShellCValidator:
             "created_at": "",
             "project_hash": actual_hash
         }
-        (tmp_path / ".auto-claude-security.json").write_text(json.dumps(profile_data))
+        (tmp_path / ".aperant-security.json").write_text(json.dumps(profile_data))
 
         reset_profile_cache()
 
@@ -1162,7 +1162,7 @@ class TestShellCValidator:
         """Blocks bash -ic with disallowed commands (interactive + command)."""
         from project.analyzer import ProjectAnalyzer
 
-        monkeypatch.setenv("AUTO_CLAUDE_PROJECT_DIR", str(tmp_path))
+        monkeypatch.setenv("APERANT_PROJECT_DIR", str(tmp_path))
 
         actual_hash = ProjectAnalyzer(tmp_path).compute_project_hash()
 
@@ -1193,7 +1193,7 @@ class TestShellCValidator:
             "created_at": "",
             "project_hash": actual_hash
         }
-        (tmp_path / ".auto-claude-security.json").write_text(json.dumps(profile_data))
+        (tmp_path / ".aperant-security.json").write_text(json.dumps(profile_data))
 
         reset_profile_cache()
 
@@ -1206,7 +1206,7 @@ class TestShellCValidator:
         """Allows combined flags when inner command is allowed."""
         from project.analyzer import ProjectAnalyzer
 
-        monkeypatch.setenv("AUTO_CLAUDE_PROJECT_DIR", str(tmp_path))
+        monkeypatch.setenv("APERANT_PROJECT_DIR", str(tmp_path))
 
         actual_hash = ProjectAnalyzer(tmp_path).compute_project_hash()
 
@@ -1237,7 +1237,7 @@ class TestShellCValidator:
             "created_at": "",
             "project_hash": actual_hash
         }
-        (tmp_path / ".auto-claude-security.json").write_text(json.dumps(profile_data))
+        (tmp_path / ".aperant-security.json").write_text(json.dumps(profile_data))
 
         reset_profile_cache()
 
@@ -1249,7 +1249,7 @@ class TestShellCValidator:
         """Blocks nested shell invocations with disallowed commands."""
         from project.analyzer import ProjectAnalyzer
 
-        monkeypatch.setenv("AUTO_CLAUDE_PROJECT_DIR", str(tmp_path))
+        monkeypatch.setenv("APERANT_PROJECT_DIR", str(tmp_path))
 
         actual_hash = ProjectAnalyzer(tmp_path).compute_project_hash()
 
@@ -1280,7 +1280,7 @@ class TestShellCValidator:
             "created_at": "",
             "project_hash": actual_hash
         }
-        (tmp_path / ".auto-claude-security.json").write_text(json.dumps(profile_data))
+        (tmp_path / ".aperant-security.json").write_text(json.dumps(profile_data))
 
         reset_profile_cache()
 
@@ -1293,7 +1293,7 @@ class TestShellCValidator:
         """Allows nested shell invocations when all commands are allowed."""
         from project.analyzer import ProjectAnalyzer
 
-        monkeypatch.setenv("AUTO_CLAUDE_PROJECT_DIR", str(tmp_path))
+        monkeypatch.setenv("APERANT_PROJECT_DIR", str(tmp_path))
 
         actual_hash = ProjectAnalyzer(tmp_path).compute_project_hash()
 
@@ -1324,7 +1324,7 @@ class TestShellCValidator:
             "created_at": "",
             "project_hash": actual_hash
         }
-        (tmp_path / ".auto-claude-security.json").write_text(json.dumps(profile_data))
+        (tmp_path / ".aperant-security.json").write_text(json.dumps(profile_data))
 
         reset_profile_cache()
 
@@ -1434,7 +1434,7 @@ class TestInheritedSecurityProfile:
             "created_at": "",
             "project_hash": "parent_hash"
         }
-        (parent_dir / ".auto-claude-security.json").write_text(json.dumps(parent_profile_data))
+        (parent_dir / ".aperant-security.json").write_text(json.dumps(parent_profile_data))
 
         # Create a profile with valid inherited_from pointing to actual parent
         profile = SecurityProfile(
@@ -1503,7 +1503,7 @@ class TestInheritedSecurityProfile:
             "created_at": "",
             "project_hash": "abc123"
         }
-        (parent_dir / ".auto-claude-security.json").write_text(json.dumps(parent_profile_data))
+        (parent_dir / ".aperant-security.json").write_text(json.dumps(parent_profile_data))
 
         # Create a profile with valid inherited_from (child -> parent)
         valid_profile = SecurityProfile(
@@ -1572,7 +1572,7 @@ class TestInheritedSecurityProfile:
             "created_at": "",
             "project_hash": "abc123"
         }
-        (dir_a / ".auto-claude-security.json").write_text(json.dumps(profile_data))
+        (dir_a / ".aperant-security.json").write_text(json.dumps(profile_data))
 
         # Create a profile pointing to dir_a from dir_b (not an ancestor)
         spoofed_profile = SecurityProfile(

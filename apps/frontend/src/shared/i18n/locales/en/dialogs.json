@@ -3,7 +3,7 @@
     "title": "Initialize Auto Claude",
     "description": "This project doesn't have Auto Claude initialized. Would you like to set it up now?",
     "willDo": "This will:",
-    "createFolder": "Create a .auto-claude folder in your project",
+    "createFolder": "Create a .aperant folder in your project",
     "copyFramework": "Copy the Auto Claude framework files",
     "setupSpecs": "Set up the specs directory for your tasks",
     "sourcePathNotConfigured": "Source path not configured",
